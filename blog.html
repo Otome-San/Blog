@@ -51,7 +51,7 @@
                     <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuario: <span id="loggedInUser"></span></a>
+                    <a class="nav-link" href="#">Usuario: <span id=""></span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="logoutBtn">Cerrar Sesión</a>
@@ -61,26 +61,59 @@
     </nav>
 
     <div class="container mt-4">
-        <body>
-            <div class="container mt-4">
-                <div class="row">
-                    <div class="col-md-6">
-                        <canvas id="chart1" width="400" height="200"></canvas>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        
-                    </div>
-                    <div class="col-md-6">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mi Red Social</title>
+</head>
+<body>
+    <div class="row">
+            <div class="col-md-3">
+                <!-- Barra lateral con información del perfil y enlaces -->
+                <div class="card">
+                    <img src="/1fdff0a59a01f7f37c2b6aa70c7d81fb.jpg" class="card-img-top" alt="Foto de perfil">
+                    <div class="card-body">
+                        <h5 class="card-title"><span id="loggedInUser"></span></h5>
+                        <p class="card-text">Información del perfil...</p>
+                        <!-- Agrega aquí enlaces adicionales o información del perfil -->
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div>
+                    <textarea id="postInput" class="form-control mb-2" placeholder="¿Qué estás pensando?"></textarea>
+                    <button onclick="publishPost()" class="btn btn-primary">Publicar</button>
+                </div>
+                <div id="postsContainer">
+                    <!-- Aquí se mostrarán las publicaciones -->
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!-- Barra lateral con sugerencias de amigos, anuncios, etc. -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sugerencias</h5>
+                        <!-- Aquí irán las sugerencias de amigos -->
+                    </div>
+                </div>
+                <!-- Puedes agregar más widgets, anuncios, etc. -->
+            </div>
+        </div>
+
+    <div class="container mt-4">
         
-            <!-- Otros scripts... -->
-        </body>
+    </div>
+
+    <!-- Scripts de Bootstrap y otros scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
     </div>
 
     <footer class="footer bg-dark text-white">

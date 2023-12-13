@@ -3,5 +3,17 @@
     "username": "Hola4",
     "email": "bik@hjk.com",
     "password": "$2b$10$tNSen9z4c4zYjn.aHYkdx.7yYLTaNgWORaGzEVyYyjEzQ3sS/xqwe"
+  },
+  {
+    "username": "kodachimiro",
+    "email": "mail@mailto.com",
+    "password": "$2b$10$NHPGXPqkCg0X.IiuRUFhm.qfA1NlIXuLDe9WVxvez2wjeH5.MG602",
+    "posts": []
+  },
+  {
+    "username": "kodachimiro1",
+    "email": "Casla@to.com",
+    "password": "$2b$10$OhnlLOEOuMmSLjJBsq9KRORLiGPNGVrfkKhbZ..ITZNFWJz/Ccuwe",
+    "posts": []
   }
 ]
