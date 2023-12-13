@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-bootstrap@0.1.0/dist/bundle.min.js"></script>
     <title>Blog</title>
     <style>
         body {
@@ -59,29 +61,26 @@
     </nav>
 
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="blog-post">
-                    <h2>Primer Post del Blog</h2>
-                    <p class="text-muted">Publicado el 1 de enero de 2023</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
+        <body>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <canvas id="chart1" width="400" height="200"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
                 </div>
-
-                <!-- Agrega más entradas del blog aquí -->
-
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-sidebar">
-                    <h4>Últimas Publicaciones</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Título de la Publicación 1</a></li>
-                        <li><a href="#">Título de la Publicación 2</a></li>
-                        <li><a href="#">Título de la Publicación 3</a></li>
-                    </ul>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        
+                    </div>
+                    <div class="col-md-6">
+                    </div>
                 </div>
             </div>
-        </div>
+        
+            <!-- Otros scripts... -->
+        </body>
     </div>
 
     <footer class="footer bg-dark text-white">
@@ -143,6 +142,67 @@
                 logout();
             });
         });
-    </script>
+
+
+        document.getElementById('postForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const title = document.getElementById('postTitle').value;
+    const content = document.getElementById('postContent').value;
+
+    fetch('http://localhost:3000/create-post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, content }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        // Puedes realizar alguna acción adicional después de crear la publicación
+    })
+    .catch(error => {
+        console.error('Error al crear la publicación:', error);
+    });
+});
+</script>
+<!-- Agrega este script al final de tu cuerpo HTML -->
+<script>
+    // Función para generar datos aleatorios
+    function generateRandomData() {
+        return Array.from({ length: 12 }, () => Math.floor(Math.random() * 100));
+    }
+
+    // Configuración común para los gráficos
+    const commonConfig = {
+        type: 'bar',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                label: 'Datos Aleatorios',
+                data: generateRandomData(),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    // Inicializa los gráficos
+    const chart1 = new Chart(document.getElementById('chart1').getContext('2d'), commonConfig);
+    const chart2 = new Chart(document.getElementById('chart2').getContext('2d'), commonConfig);
+    const chart3 = new Chart(document.getElementById('chart3').getContext('2d'), commonConfig);
+    const chart4 = new Chart(document.getElementById('chart4').getContext('2d'), commonConfig);
+</script>
+
+
 </body>
 </html>

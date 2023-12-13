@@ -1,22 +1,13 @@
 [
   {
-    "username": "Hola",
-    "email": "aaa@hola.com",
-    "password": "1234"
-  },
-  {
-    "username": "Hola3",
-    "email": "prueba@prueba.com",
-    "password": "12345"
-  },
-  {
-    "username": "Hola2",
-    "email": "hola@caca.com",
-    "password": "1234"
-  },
-  {
     "username": "Hola4",
     "email": "bik@hjk.com",
     "password": "$2b$10$tNSen9z4c4zYjn.aHYkdx.7yYLTaNgWORaGzEVyYyjEzQ3sS/xqwe"
+  },
+  {
+    "username": "Casla",
+    "email": "Casla@gmail.com",
+    "password": "$2b$10$Pefa9eoV43oWoUEZC1m2je6H1Y6bMfswIuXYmreTpPLd2ro372xcO",
+    "posts": []
   }
 ]

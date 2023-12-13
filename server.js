@@ -10,7 +10,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-let loggedInUser = null; // Variable para almacenar el usuario actualmente autenticado
+let loggedInUser = null;
 
 // Ruta para manejar el registro de usuarios
 app.post('/register', async (req, res) => {
@@ -31,7 +31,7 @@ app.post('/register', async (req, res) => {
             const hashedPassword = await bcrypt.hash(password, 10);
 
             // Registra al nuevo usuario en el archivo JSON con la contraseña encriptada
-            users.push({ username, email, password: hashedPassword });
+            users.push({ username, email, password: hashedPassword, posts: [] });
 
             // Guarda los usuarios actualizados en el archivo JSON
             fs.writeFileSync('users.json', JSON.stringify(users, null, 2));
@@ -66,6 +66,35 @@ app.post('/login', async (req, res) => {
         }
     } else {
         res.json({ success: false, message: 'Credenciales incorrectas' });
+    }
+});
+
+// Ruta para obtener el usuario actualmente autenticado
+app.get('/user', (req, res) => {
+    res.json(loggedInUser);
+});
+
+// Ruta para cerrar sesión
+app.post('/logout', (req, res) => {
+    loggedInUser = null; // Elimina el usuario autenticado
+    res.json({ success: true, message: 'Cierre de sesión exitoso' });
+});
+
+// Ruta para manejar la creación de una nueva publicación
+app.post('/create-post', (req, res) => {
+    const { title, content } = req.body;
+
+    // Verifica si hay un usuario autenticado
+    if (loggedInUser) {
+        // Agrega la nueva publicación al array de publicaciones del usuario
+        loggedInUser.posts.push({ title, content });
+
+        // Actualiza el archivo JSON con la nueva información
+        fs.writeFileSync('users.json', JSON.stringify(users, null, 2));
+
+        res.json({ success: true, message: 'Publicación creada exitosamente' });
+    } else {
+        res.status(401).json({ success: false, message: 'Usuario no autenticado' });
     }
 });
 
